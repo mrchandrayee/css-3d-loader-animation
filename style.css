@@ -1,0 +1,158 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 20px 12px 28px;
+  background: #000;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.page {
+  width: min(100%, 680px);
+  margin: 0 auto;
+}
+
+h1 {
+  margin: 0;
+  padding: 0 8px;
+  color: #00aaff;
+  font-size: clamp(18px, 4.2vw, 24px);
+  line-height: 1.4;
+  font-weight: 700;
+}
+
+.stage {
+  min-height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+  overflow: hidden;
+}
+
+.spinner-ring {
+  width: 100px;
+  height: 100px;
+  flex: 0 0 100px;
+  border: 8px solid transparent;
+  border-top: 8px solid cyan;
+  border-radius: 50%;
+  animation: spin 1.2s linear infinite;
+  box-shadow: 0 0 20px cyan, 0 0 40px cyan,
+              0 0 60px cyan;
+  transform: perspective(500px) rotateX(60deg);
+}
+
+@keyframes spin {
+  0% {
+    transform: perspective(500px)
+      rotateX(60deg) rotateZ(0deg);
+  }
+  100% {
+    transform: perspective(500px)
+      rotateX(60deg) rotateZ(360deg);
+  }
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 9px;
+  padding: 10px;
+  background: #101010;
+}
+
+.controls button {
+  border: 1px solid #087f8a;
+  border-radius: 5px;
+  padding: 7px 12px;
+  background: #06171a;
+  color: #8dfaff;
+  font-size: 11px;
+  cursor: pointer;
+  transition: background .2s, box-shadow .2s;
+}
+
+.controls button:hover {
+  background: #0b3035;
+  box-shadow: 0 0 10px #00ffff55;
+}
+
+.code-panel {
+  padding: 12px 14px 15px;
+  border-top: 1px solid #123c40;
+  background: #171717;
+}
+
+.code-title {
+  margin-bottom: 9px;
+  color: #00c8e9;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+pre {
+  margin: 0;
+  overflow: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  color: #b8c9d2;
+  font: 11px/1.55 ui-monospace, SFMono-Regular, Consolas, monospace;
+}
+
+.hint {
+  margin: 10px 0 0;
+  text-align: center;
+  color: #68747c;
+  font-size: 10px;
+}
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 18px;
+  transform: translate(-50%, 12px);
+  padding: 8px 13px;
+  border: 1px solid #087f8a;
+  border-radius: 6px;
+  background: #07191c;
+  color: #b8ffff;
+  font-size: 11px;
+  opacity: 0;
+  pointer-events: none;
+  transition: .2s;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+button:focus-visible {
+  outline: 2px solid cyan;
+  outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+  .stage {
+    min-height: 240px;
+  }
+
+  .code-panel {
+    padding: 10px;
+  }
+
+  pre {
+    font-size: 9px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner-ring {
+    animation-duration: 4s;
+  }
+}

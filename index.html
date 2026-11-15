@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  <title>CSS 3D Loader Animation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+    <h1>CSS 3D Loader animation</h1>
+    <section class="stage" aria-label="3D cyan loader preview">
+      <div class="spinner-ring" id="spinnerRing" role="img" aria-label="Cyan glowing 3D rotating ring"></div>
+    </section>
+    <section class="controls" aria-label="Animation controls">
+      <button id="toggleMotion" type="button">Pause animation</button>
+      <button id="copyCss" type="button">Copy CSS</button>
+    </section>
+    <section class="code-panel">
+      <div class="code-title">style.css — extracted loader code</div>
+      <pre><code id="cssSnippet">body {
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.spinner-ring {
+  width: 100px;
+  height: 100px;
+  border: 8px solid transparent;
+  border-top: 8px solid cyan;
+  border-radius: 50%;
+  animation: spin 1.2s linear infinite;
+  box-shadow: 0 0 20px cyan, 0 0 40px cyan,
+              0 0 60px cyan;
+  transform: perspective(500px) rotateX(60deg);
+}
+
+@keyframes spin {
+  0% {
+    transform: perspective(500px)
+      rotateX(60deg) rotateZ(0deg);
+  }
+  100% {
+    transform: perspective(500px)
+      rotateX(60deg) rotateZ(360deg);
+  }
+}</code></pre>
+    </section>
+    <p class="hint">A 3D perspective loader built with pure CSS.</p>
+  </main>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
